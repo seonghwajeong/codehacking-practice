@@ -166,4 +166,22 @@ class AdminPostsController extends Controller
         return redirect('/admin/posts');
 
     }
+
+    /*
+     * no admin functions
+     */
+
+
+    public function post($id){
+
+        $post = Post::findOrFail($id);
+
+        return view('post', compact('post'));
+
+//        return $post;
+
+    }
+
+
+
 }
