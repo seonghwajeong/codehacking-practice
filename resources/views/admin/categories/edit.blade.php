@@ -4,7 +4,7 @@
 
     <h1>Edit Category</h1>
 
-
+    <div class="col-sm-6">
 
         {!! Form::model($category, ['method'=>'PATCH', 'action'=>['AdminCategoriesController@update', $category->id]]) !!}
 
@@ -29,7 +29,7 @@
 
         {!! Form::close() !!}
 
-
+    </div>
 
 
 @stop
