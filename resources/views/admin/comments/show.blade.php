@@ -2,8 +2,8 @@
 
 @section('content')
 
-    @if($replies)
-        <h1>Replies</h1>
+    @if($comments)
+        <h1>Comments</h1>
 
         <table class="table">
             <thead>
@@ -18,19 +18,20 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($replies as $reply)
+            @foreach($comments as $comment)
 
                 <tr>
-                    <td>{{$reply->id}}</td>
-                    <td>{{$reply->author}}</td>
-                    <td>{{$reply->email}}</td>
-                    <td>{{$reply->body}}</td>
-                    <td><a href="{{route('home.post', $reply->comment->post->id)}}">View Post</a></td>
+                    <td>{{$comment->id}}</td>
+                    <td>{{$comment->author}}</td>
+                    <td>{{$comment->email}}</td>
+                    <td>{{$comment->body}}</td>
+                    <td><a href="{{route('home.post', $comment->post->id)}}">View Post</a></td>
+
                     <td>
 
-                        {!! Form::open(['method'=>'PATCH', 'action'=>['CommentRepliesController@update', $reply->id]]) !!}
+                        {!! Form::open(['method'=>'PATCH', 'action'=>['PostCommentsController@update', $comment->id]]) !!}
 
-                        @if($reply->is_active == 1)
+                        @if($comment->is_active == 1)
 
                             <input type="hidden" name="is_active" value="0">
 
@@ -53,7 +54,7 @@
                     </td>
                     <td>
 
-                        {!! Form::open(['method'=>'DELETE', 'action'=>['CommentRepliesController@destroy', $reply->id]]) !!}
+                        {!! Form::open(['method'=>'DELETE', 'action'=>['PostCommentsController@destroy', $comment->id]]) !!}
 
                         <div class="form-group">
                             {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
@@ -70,7 +71,7 @@
 
     @else
 
-        <h1 class="text-center">No Replies</h1>
+        <h1 class="text-center">No Comments</h1>
 
     @endif
 
