@@ -73,8 +73,13 @@
 
         </div>
 
+        <!-- Blog Sidebar -->
+        @include('includes.front_side_nav')
+
     </div>
     <!-- /.row -->
+
+
 
     <hr>
 
